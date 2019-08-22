@@ -76,7 +76,7 @@ console.log(firstNamesAllCaps);
 // ==== Challenge 3: Use .filter() ====
 // The large shirts won't be available for the event due to an ordering issue. We need a filtered version of the runners array, containing only those runners with large sized shirts so they can choose a different size. This will be an array of objects.
 let runnersLargeSizeShirt = [];
-console.log(runnersLargeSizeShirt);
+// console.log(runnersLargeSizeShirt);
 // we don't want youngsters
 // use filter to produce an array with people over 21 only
 runnersLargeSizeShirt = runners.filter(largeSize => (largeSize.shirt_size === "L")); // 21 > 21 // false
@@ -97,13 +97,55 @@ console.log(ticketPriceTotal);
 // Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the array methods listed above.
 /*
 // Problem 1
-Let us help the event director by arranging the runners alphabetically, according to their surname
-
-// Problem 2
-Some donated more than others, let us separate those who donated above 200 so the event director can speak to them privately
-
-// Problem 3 
-Creat a new array that takes specific records for shirt sizes and the number of runners so that there wont be surplus
-
-
+Let us help the event director by arranging the runners alphabetically,  surname first
+l
 */
+let fullNames = [];
+console.log(fullNames);
+runners.forEach(person => {
+  fullNames.push(`${person.first_name}  ${person.last_name}`);
+});
+console.log(fullNames);
+
+let carModels = [];
+
+let carModelsSorted = [];
+for (let i = 0; i < inventory.length; i++) {
+  carModels.push(inventory[i].car_model);
+
+  // carModelsSorted.sort(carModels[i]);
+  if (i<carModels.length){
+    
+      carModelsSorted.push(carModels[i])
+  }
+}
+
+console.log(carModelsSorted.sort());
+
+/*
+         Problem 2
+Some donated more than others, let us separate those who donated above 200 so the event director can speak to them privately
+*/
+let highDonors = [];
+ highDonors= runners.map((donors) => {
+
+  return donors.donation > 200
+
+}
+);
+console.log(highDonors)
+  
+
+// console.log(students);
+// firstNamesAllCaps = runners.map((fname) => fname.first_name.toUpperCase());
+// console.log(firstNamesAllCaps);
+
+/* 
+           Problem 3 
+The event director noticed some of the runners are students, as a result of most of the emails having the .edu domain
+Help him create a separate list so they can be issued free gifts later
+*/
+let students = runners.filter((runner) => runner.email.indexOf('.edu') > -1);
+console.log(students);
+
+
